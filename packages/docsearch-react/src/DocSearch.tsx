@@ -2,25 +2,22 @@ import type {
   AutocompleteState,
   AutocompleteOptions,
 } from '@algolia/autocomplete-core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import type { SearchClient } from 'typesense';
 import type { ConfigurationOptions as TypesenseConfigurationOptions } from 'typesense/lib/Typesense/Configuration';
 import type { SearchParams as TypesenseSearchParams } from 'typesense/lib/Typesense/Documents';
 
-import { DocSearchButton } from './DocSearchButton';
 import { DocSearchModal } from './DocSearchModal';
 import type {
   DocSearchHit,
   InternalDocSearchHit,
   StoredDocSearchHit,
 } from './types';
-import { useDocSearchKeyboardEvents } from './useDocSearchKeyboardEvents';
 
-import type { ButtonTranslations, ModalTranslations } from '.';
+import type { ModalTranslations } from '.';
 
 export type DocSearchTranslations = Partial<{
-  button: ButtonTranslations;
   modal: ModalTranslations;
 }>;
 
@@ -46,11 +43,7 @@ export interface DocSearchProps {
 }
 
 export function DocSearch(props: DocSearchProps) {
-  const searchButtonRef = React.useRef<HTMLButtonElement>(null);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [initialQuery, setInitialQuery] = React.useState<string | undefined>(
-    props?.initialQuery || undefined
-  );
 
   const onOpen = React.useCallback(() => {
     setIsOpen(true);
@@ -60,36 +53,36 @@ export function DocSearch(props: DocSearchProps) {
     setIsOpen(false);
   }, [setIsOpen]);
 
-  const onInput = React.useCallback(
-    (event: KeyboardEvent) => {
-      setIsOpen(true);
-      setInitialQuery(event.key);
-    },
-    [setIsOpen, setInitialQuery]
-  );
+  useEffect(() => {
+    const onKeydown = (event: KeyboardEvent) => {
+      if (isOpen && event.key === 'Escape') {
+        onClose();
+      } else if (
+        event.key.toLowerCase() === 'j' &&
+        (event.metaKey || event.ctrlKey) &&
+        !isOpen
+      ) {
+        event.preventDefault();
+        onOpen();
+      }
+    };
 
-  useDocSearchKeyboardEvents({
-    isOpen,
-    onOpen,
-    onClose,
-    onInput,
-    searchButtonRef,
-  });
+    document.addEventListener('keydown', onKeydown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeydown);
+    };
+  }, [isOpen, onClose, onOpen]);
 
   return (
     <>
-      <DocSearchButton
-        ref={searchButtonRef}
-        translations={props?.translations?.button}
-        onClick={onOpen}
-      />
-
       {isOpen &&
         createPortal(
           <DocSearchModal
             {...props}
             initialScrollY={window.scrollY}
-            initialQuery={initialQuery}
+            placeholder="Search through our docs"
+            initialQuery={props.initialQuery}
             translations={props?.translations?.modal}
             onClose={onClose}
           />,

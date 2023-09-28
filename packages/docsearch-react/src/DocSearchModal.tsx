@@ -431,7 +431,7 @@ export function DocSearchModal({
         </div>
 
         <footer className="DocSearch-Footer">
-          <Footer translations={footerTranslations} />
+          <Footer />
         </footer>
       </div>
     </div>
