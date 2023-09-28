@@ -1,6 +1,6 @@
 {
   "name": "@docsearch/website",
-  "version": "3.3.3",
+  "version": "3.4.0",
   "private": true,
   "homepage": "https://docsearch.algolia.com/",
   "scripts": {
