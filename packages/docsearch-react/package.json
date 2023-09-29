@@ -60,5 +60,6 @@
     "react-dom": {
       "optional": true
     }
-  }
+  },
+  "gitHead": "636de30073b52025c660b0b1b1d681fa39e7640c"
 }

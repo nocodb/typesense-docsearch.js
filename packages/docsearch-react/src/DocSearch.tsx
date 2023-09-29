@@ -58,13 +58,6 @@ export function DocSearch(props: DocSearchProps) {
       if (isOpen && event.key === 'Escape') {
         onClose();
       } else if (
-        event.key.toLowerCase() === 'j' &&
-        (event.metaKey || event.ctrlKey) &&
-        !isOpen
-      ) {
-        event.preventDefault();
-        onOpen();
-      } else if (
         event.key.toLocaleLowerCase() === 'k' &&
         (event.metaKey || event.ctrlKey) &&
         isOpen
@@ -78,6 +71,13 @@ export function DocSearch(props: DocSearchProps) {
       ) {
         event.preventDefault();
         onClose();
+      } else if (
+        event.key.toLowerCase() === 'j' &&
+        (event.metaKey || event.ctrlKey) &&
+        !isOpen
+      ) {
+        event.preventDefault();
+        onOpen();
       }
     };
 
