@@ -42,11 +42,12 @@ export interface DocSearchProps {
   getMissingResultsUrl?: ({ query }: { query: string }) => string;
 }
 
+declare let window: any;
 export function DocSearch(props: DocSearchProps) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const onOpen = React.useCallback(() => {
-    setIsOpen(true);
+    if (window?.doc_enabled as boolean) setIsOpen(true);
   }, [setIsOpen]);
 
   const onClose = React.useCallback(() => {
