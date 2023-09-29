@@ -64,6 +64,20 @@ export function DocSearch(props: DocSearchProps) {
       ) {
         event.preventDefault();
         onOpen();
+      } else if (
+        event.key.toLocaleLowerCase() === 'k' &&
+        (event.metaKey || event.ctrlKey) &&
+        isOpen
+      ) {
+        event.preventDefault();
+        onClose();
+      } else if (
+        event.key.toLocaleLowerCase() === 'l' &&
+        (event.metaKey || event.ctrlKey) &&
+        isOpen
+      ) {
+        event.preventDefault();
+        onClose();
       }
     };
 
