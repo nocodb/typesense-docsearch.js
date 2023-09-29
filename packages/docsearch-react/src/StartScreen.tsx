@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RecentIcon, ResetIcon, StarIcon } from './icons';
+import { ResetIcon, StarIcon, RecentIcon } from './icons';
 import { Results } from './Results';
 import type { ScreenStateProps } from './ScreenState';
 import type { InternalDocSearchHit } from './types';

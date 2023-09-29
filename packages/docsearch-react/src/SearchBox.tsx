@@ -6,9 +6,6 @@ import type { MutableRefObject } from 'react';
 import React from 'react';
 
 import { MAX_QUERY_SIZE } from './constants';
-import { LoadingIcon } from './icons/LoadingIcon';
-import { ResetIcon } from './icons/ResetIcon';
-import { SearchIcon } from './icons/SearchIcon';
 import type { InternalDocSearchHit } from './types';
 
 export type SearchBoxTranslations = Partial<{
@@ -33,13 +30,7 @@ interface SearchBoxProps
   translations?: SearchBoxTranslations;
 }
 
-export function SearchBox({ translations = {}, ...props }: SearchBoxProps) {
-  const {
-    resetButtonTitle = 'Clear the query',
-    resetButtonAriaLabel = 'Clear the query',
-    cancelButtonText = 'Cancel',
-    cancelButtonAriaLabel = 'Cancel',
-  } = translations;
+export function SearchBox({ ...props }: SearchBoxProps) {
   const { onReset } = props.getFormProps({
     inputElement: props.inputRef.current,
   });
@@ -65,14 +56,6 @@ export function SearchBox({ translations = {}, ...props }: SearchBoxProps) {
         }}
         onReset={onReset}
       >
-        <label className="DocSearch-MagnifierLabel" {...props.getLabelProps()}>
-          <SearchIcon />
-        </label>
-
-        <div className="DocSearch-LoadingIndicator">
-          <LoadingIcon />
-        </div>
-
         <input
           className="DocSearch-Input"
           ref={props.inputRef}
@@ -82,26 +65,7 @@ export function SearchBox({ translations = {}, ...props }: SearchBoxProps) {
             maxLength: MAX_QUERY_SIZE,
           })}
         />
-
-        <button
-          type="reset"
-          title={resetButtonTitle}
-          className="DocSearch-Reset"
-          aria-label={resetButtonAriaLabel}
-          hidden={!props.state.query}
-        >
-          <ResetIcon />
-        </button>
       </form>
-
-      <button
-        className="DocSearch-Cancel"
-        type="reset"
-        aria-label={cancelButtonAriaLabel}
-        onClick={props.onClose}
-      >
-        {cancelButtonText}
-      </button>
     </>
   );
 }
