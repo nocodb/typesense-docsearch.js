@@ -432,14 +432,14 @@
      width: 100%;
      z-index: 300;
 }
-.container {
+.doc-container {
     display: flex;
     padding-block: 0.75rem;
     padding-inline: 0.5rem;
     justify-content: center;
     width: 100%;
 }
-.item {
+.doc-footer-item {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
@@ -449,20 +449,20 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
 }
-.icon {
+.doc-icon {
     width: 1rem;
     height: 1rem;
 }
-.shortcut{
+.doc-shortcut{
     padding-inline: 0.25rem;
     border-radius: 0.375rem;
     border: 1px solid #d5d5d9;
     background-color: #F3F4F6;
 }
-.shortcut-active {
+.doc-shortcut-active {
     color: #3366ff;
 }
-.icon-active {
+.doc-icon-active {
     color: white;
     background-color: #3366ff;
     border: 1px solid #3366ff;
