@@ -26,5 +26,6 @@
     "build:css": "node build-css.js",
     "build": "yarn build:clean && mkdir dist && yarn build:css",
     "watch": "watch \"yarn build:css\" --ignoreDirectoryPattern \"/dist/\""
-  }
+  },
+  "gitHead": "636de30073b52025c660b0b1b1d681fa39e7640c"
 }

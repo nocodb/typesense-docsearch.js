@@ -99,7 +99,7 @@ export function DocSearchModal({
       key: `__DOCSEARCH_RECENT_SEARCHES__${indexName}`,
       // We display 7 recent searches and there's no favorites, but only
       // 4 when there are favorites.
-      limit: favoriteSearches.getAll().length === 0 ? 7 : 4,
+      limit: 4,
     })
   ).current;
 
@@ -410,7 +410,7 @@ export function DocSearchModal({
           />
         </header>
 
-        <div className="DocSearch-Dropdown" ref={dropdownRef}>
+        <div className="DocSearch-Dropdown nc-scrollbar-md" ref={dropdownRef}>
           <ScreenState
             {...autocomplete}
             indexName={indexName}
@@ -431,7 +431,7 @@ export function DocSearchModal({
         </div>
 
         <footer className="DocSearch-Footer">
-          <Footer translations={footerTranslations} />
+          <Footer />
         </footer>
       </div>
     </div>
