@@ -59,21 +59,21 @@ export function DocSearch(props: DocSearchProps) {
       if (isOpen && event.key === 'Escape') {
         onClose();
       } else if (
-        event.key.toLocaleLowerCase() === 'k' &&
+        event.key?.toLocaleLowerCase() === 'k' &&
         (event.metaKey || event.ctrlKey) &&
         isOpen
       ) {
         event.preventDefault();
         onClose();
       } else if (
-        event.key.toLocaleLowerCase() === 'l' &&
+        event.key?.toLocaleLowerCase() === 'l' &&
         (event.metaKey || event.ctrlKey) &&
         isOpen
       ) {
         event.preventDefault();
         onClose();
       } else if (
-        event.key.toLowerCase() === 'j' &&
+        event.key?.toLowerCase() === 'j' &&
         (event.metaKey || event.ctrlKey) &&
         !isOpen
       ) {
