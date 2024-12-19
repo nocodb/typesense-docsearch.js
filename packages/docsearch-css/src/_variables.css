@@ -18,7 +18,7 @@
     0 3px 8px 0 rgba(85, 90, 100, 1);
 
   /* searchbox */
-  --docsearch-searchbox-height: 56px;
+  --docsearch-searchbox-height: 53px;
   --docsearch-searchbox-background: rgb(235, 237, 240);
   --docsearch-searchbox-focus-background: #fff;
   --docsearch-searchbox-shadow: inset 0 0 0 2px var(--docsearch-primary-color);
