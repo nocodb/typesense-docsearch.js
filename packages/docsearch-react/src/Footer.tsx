@@ -76,7 +76,7 @@ export function Footer() {
           {renderCmdOrCtrlKey()} + J
         </span>
       </div>
-      <div className="doc-footer-item">
+      <div className="doc-footer-item" onClick={() => setActiveCmdView('K')}>
         <svg
           className="doc-icon"
           xmlns="http://www.w3.org/2000/svg"
